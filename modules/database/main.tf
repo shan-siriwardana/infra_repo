@@ -5,19 +5,19 @@ resource "google_sql_database_instance" "db_instance" {
 
   settings {
     tier                        = var.db_instance_type
-    db_availability_type           = var.db_availability_type  # (REGIONAL) or single zone (ZONAL).'
+    availability_type           = var.db_availability_type  # (REGIONAL) or single zone (ZONAL).'
     deletion_protection_enabled = var.deletion_protection_enabled
     disk_autoresize = true
     disk_size = var.db_disk_size  # set 10G in module vars
     disk_type = var.db_disk_type # set PD_HDD in module vars
 
-    backup_configuration =  {
+    backup_configuration  {
         enabled                        = var.backups_enabled  # set to false in mod vars
       }
 
 
 
-ip_configuration = {
+ip_configuration {
 
         ipv4_enabled                                  = false
         private_network                               = var.private_network
