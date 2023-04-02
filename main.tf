@@ -18,6 +18,8 @@ module "database" {
   private_network      = module.networking.network_id
   db_username          = var.db_username
   db_password          = var.db_password
-
+  depends_on = [
+    module.networking
+  ]
 }
 
