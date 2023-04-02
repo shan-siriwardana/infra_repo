@@ -1,3 +1,4 @@
+# define local values
 locals {
   subnets = {
     for subnet in var.subnets :
@@ -13,9 +14,11 @@ locals {
   }
 }
 
+# define networking resources
 resource "google_compute_network" "network" {
   name        = var.network_name
   description = var.network_description
+  auto_create_subnetworks = false
 }
 
 resource "google_compute_subnetwork" "subnetwork" {
