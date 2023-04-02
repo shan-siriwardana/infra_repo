@@ -99,13 +99,13 @@ resource "google_project_iam_member" "cluster_service_account-gcr" {
   member  = "serviceAccount:${google_service_account.cluster_service_account.email}"
 }
 
-resource "google_project_iam_member" "cluster_service_account-artifact-registry" {
+resource "google_project_iam_member" "cluster_service_account-artifact-registry-read" {
   project = var.project_id
   role    = "roles/artifactregistry.reader"
   member  = "serviceAccount:${google_service_account.cluster_service_account.email}"
 }
 
-resource "google_project_iam_member" "cluster_service_account-artifact-registry" {
+resource "google_project_iam_member" "cluster_service_account-artifact-registry-write" {
   project = var.project_id
   role    = "roles/artifactregistry.writer"
   member  = "serviceAccount:${google_service_account.cluster_service_account.email}"

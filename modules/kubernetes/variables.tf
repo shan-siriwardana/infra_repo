@@ -26,7 +26,7 @@ variable "initial_node_count" {
 variable "autoscale_min_node_count" {
   type        = string
   description = "Minimum number of nodes per zone in the NodePool."
-  defualt     = "1"
+  default     = "1"
 }
 
 variable "autoscale_max_node_count" {
