@@ -49,16 +49,6 @@ variable "db_disk_size" {
   description = "The size of the db instande disk"
 }
 
-variable "db_disk_type" {
-  type        = string
-  description = "The type of the db instande disk"
-}
-
-variable "backups_enabled" {
-  type        = string
-  description = "Enable backups"
-}
-
 variable "private_network" {
   type        = string
   description = "The VPC network from which the Cloud SQL instance is accessible for private IP."
