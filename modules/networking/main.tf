@@ -45,10 +45,9 @@ resource "google_compute_router_nat" "route_nat" {
 
   dynamic "subnetwork" {
     for_each = local.private_subnets
-    #for_each = { for sn in local.subnets : sn.type == "private" ? sn.subnet_name : continue => sn }
     content {
-      name                    = each.value.subnet_name
-      source_ip_ranges_to_nat = "ALL_IP_RANGES"
+      name                    = subnetwork.value["subnet_name"]
+      source_ip_ranges_to_nat = ["ALL_IP_RANGES"]
     }
   }
 
