@@ -5,6 +5,14 @@ locals {
   }
 }
 
+locals {
+  private_subnets = {
+    for subnet in var.subnets :
+    "${subnet.subnet_region}/${subnet.subnet_name}" => subnet
+    if subnet.type == "private"
+  }
+}
+
 resource "google_compute_network" "network" {
   name        = var.network_name
   description = var.network_description
@@ -36,7 +44,7 @@ resource "google_compute_router_nat" "route_nat" {
   source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
 
   dynamic "subnetwork" {
-    for_each = local.subnets if each.value.type == "private"
+    for_each = local.private_subnets
     #for_each = { for sn in local.subnets : sn.type == "private" ? sn.subnet_name : continue => sn }
     content {
       name                    = each.value.subnet_name
