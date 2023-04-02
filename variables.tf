@@ -74,7 +74,6 @@ variable "cluster_master_location" {
   description = "The location in which cluster master is created"
 }
 
-
 variable "node_locations" {
   type        = list
   description = "The list of zones in which the node pool's nodes should be located."

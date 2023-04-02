@@ -41,6 +41,6 @@ app_database         = "app"
 cluster_name     = "demoapp-cluster"
 # cluster locations/node count will be regionl/multiple  in the actual implementation to achieve high availability
 cluster_master_location           = "us-central1"
-node_locations = "us-central1"
+node_locations = ["us-central1"]
 initial_node_count         = "1"
 project_id = "tst-project-112334"
