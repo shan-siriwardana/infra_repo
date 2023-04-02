@@ -16,8 +16,8 @@ locals {
 
 # define networking resources
 resource "google_compute_network" "network" {
-  name        = var.network_name
-  description = var.network_description
+  name                    = var.network_name
+  description             = var.network_description
   auto_create_subnetworks = false
 }
 
@@ -77,6 +77,6 @@ resource "google_service_networking_connection" "private_vpc_connection" {
   service                 = "servicenetworking.googleapis.com"
   reserved_peering_ranges = [google_compute_global_address.private_ip_alloc.name]
   depends_on = [
-    google_compute_network.network,google_compute_global_address.private_ip_alloc
+    google_compute_network.network, google_compute_global_address.private_ip_alloc
   ]
 }

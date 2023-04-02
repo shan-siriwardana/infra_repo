@@ -26,11 +26,11 @@ subnets = [
     type          = "private"
   }
 ]
-router = "demoapp-router"
-nat    = "demoapp-nat"
-db_instance_name = "demoapp-db-instance"
-db_version = "POSTGRES_9_6"
-db_instance_type = "db-f1-micro"
-db_availability_type = "ZONAL"  # db_availability_type will be set to 'REGIONAL' in actual implementation to achive high availability
-db_disk_size = 10
-app_database = "app"
+router               = "demoapp-router"
+nat                  = "demoapp-nat"
+db_instance_name     = "demoapp-db-instance"
+db_version           = "POSTGRES_9_6"
+db_instance_type     = "db-f1-micro"
+db_availability_type = "ZONAL" # db_availability_type will be set to 'REGIONAL' in actual implementation to achive high availability
+db_disk_size         = 10
+app_database         = "app"
