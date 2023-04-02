@@ -1,29 +1,3 @@
-variable "network_name" {
-  description = "The name of the network"
-  type        = string
-}
-
-variable "network_description" {
-  type        = string
-  description = "Description of the network"
-  default     = ""
-}
-
-variable "subnets" {
-  type        = list(map(string))
-  description = "The list of subnets"
-}
-
-variable "router" {
-  type        = string
-  description = "The name of the cloud router"
-}
-
-variable "nat" {
-  type        = string
-  description = "The name of the nat"
-}
-
 variable "db_instance_name" {
   description = "The name of database instance"
   type        = string
@@ -32,36 +6,42 @@ variable "db_instance_name" {
 variable "db_version" {
   type        = string
   description = "Database version of the instance"
+  default = "POSTGRES_9_6"
 }
 
 variable "db_instance_type" {
   type        = string
   description = "Type of the database instance"
+  default = "db-f1-micro"
 }
 
 variable "db_availability_type" {
   type        = string
   description = "Availability type of the db instance"
+  default = "ZONAL"
 }
 
 variable "db_disk_size" {
   type        = string
   description = "The size of the db instande disk"
+  default = "10"
 }
 
 variable "db_disk_type" {
   type        = string
   description = "The type of the db instande disk"
+  default = "PD_HDD"
 }
 
 variable "backups_enabled" {
   type        = string
   description = "Enable backups"
+  default = "false"
 }
 
 variable "private_network" {
   type        = string
-  description = "The VPC network from which the Cloud SQL instance is accessible for private IP."
+  description = "he VPC network from which the Cloud SQL instance is accessible for private IP."
 }
 
 variable "db_username" {
@@ -77,4 +57,3 @@ variable "db_password" {
 variable "app_database" {
   type        = string
   description = "The name of the application database"
-}

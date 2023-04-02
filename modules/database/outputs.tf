@@ -1,6 +1,6 @@
 output "network_id" {
   value       = google_compute_network.network.id
-  description = "The id of the network"
+  description = "The name of the network"
 }
 
 output "network_name" {
