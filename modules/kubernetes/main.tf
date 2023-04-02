@@ -6,14 +6,14 @@ resource "google_container_cluster" "primary" {
   remove_default_node_pool = true
   initial_node_count       = 1
 
-  cluster_autoscaling {
-    enabled = yes
-    resource_limits {
-      resource_type = "cpu"
-      minimum       = var.cluster_autoscale_min_cpu
-      maximum       = var.cluster_autoscale_max_cpu
-    }
-  }
+  # cluster_autoscaling {
+  #   enabled = yes
+  #   resource_limits {
+  #     resource_type = "cpu"
+  #     minimum       = var.cluster_autoscale_min_cpu
+  #     maximum       = var.cluster_autoscale_max_cpu
+  #   }
+  # }
 
   #   dynamic "master_authorized_networks_config" {
   #     for_each = local.master_authorized_networks_config
