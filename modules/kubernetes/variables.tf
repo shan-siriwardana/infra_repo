@@ -14,7 +14,7 @@ variable "cluster_network" {
 }
 
 variable "node_locations" {
-  type        = list
+  type        = list(any)
   description = "The list of zones in which the node pool's nodes should be located."
 }
 
@@ -26,19 +26,19 @@ variable "initial_node_count" {
 variable "autoscale_min_node_count" {
   type        = string
   description = "Minimum number of nodes per zone in the NodePool."
-  defualt = "1"
+  defualt     = "1"
 }
 
 variable "autoscale_max_node_count" {
   type        = string
   description = "Minimum number of nodes per zone in the NodePool."
-  default = "2"
+  default     = "2"
 }
 
 variable "node_machine_type" {
   type        = string
   description = "Machine type of nodepool's nodes"
-  default = "e2-small"
+  default     = "e2-small"
 }
 
 variable "project_id" {

@@ -64,7 +64,7 @@ resource "google_compute_global_address" "private_ip_alloc" {
   name          = "private-ip-alloc"
   purpose       = "VPC_PEERING"
   address_type  = "INTERNAL"
-  prefix_length = 26
+  prefix_length = 24
   network       = google_compute_network.network.id
   depends_on = [
     google_compute_network.network

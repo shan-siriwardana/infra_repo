@@ -75,7 +75,7 @@ variable "cluster_master_location" {
 }
 
 variable "node_locations" {
-  type        = list
+  type        = list(any)
   description = "The list of zones in which the node pool's nodes should be located."
 }
 
