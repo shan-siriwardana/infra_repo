@@ -37,6 +37,7 @@ resource "google_container_cluster" "primary" {
     #   disabled = !var.horizontal_pod_autoscaling
     # }
   }
+  subnetwork = var.cluster_instance_subnet
 }
 
 
@@ -46,9 +47,7 @@ resource "google_container_node_pool" "nodepool" {
   cluster        = google_container_cluster.primary.name
   node_locations = var.node_locations
 
-
   initial_node_count = var.initial_node_count
-
 
   autoscaling {
     min_node_count = var.autoscale_min_node_count
@@ -56,45 +55,12 @@ resource "google_container_node_pool" "nodepool" {
     #   location_policy      = lookup(autoscaling.value, "location_policy", null)
   }
 
-
-
   node_config {
     machine_type    = var.node_machine_type
-    service_account = var.nodepool_service_account #### fill up
+    service_account = google_service_account.cluster_service_account.email #### fill up
   }
 
 
-}
-
-/**
- * Copyright 2022 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// This file was automatically generated from a template in ./autogen/main
-
-locals {
-  service_account_list = compact(
-    concat(
-      google_service_account.cluster_service_account.*.email,
-      ["dummy"],
-    ),
-  )
-  // if user set var.service_account it will be used even if var.create_service_account==true, so service account will be created but not used
-  service_account = (var.service_account == "" || var.service_account == "create") && var.create_service_account ? local.service_account_list[0] : var.service_account
-
-  registry_projects_list = length(var.registry_project_ids) == 0 ? [var.project_id] : var.registry_project_ids
 }
 
 

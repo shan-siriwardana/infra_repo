@@ -46,6 +46,14 @@ variable "project_id" {
   description = "GCP project ID"
 }
 
+variable "cluster_instance_subnet" {
+  type        = string
+  description = "The name or self_link of the Google Compute Engine subnetwork in which the cluster's instances are launched."
+}
+
+
+
+
 
 
 

@@ -84,7 +84,13 @@ variable "initial_node_count" {
   description = "The initial number of nodes for the pool."
 }
 
+variable "cluster_instance_subnet" {
+  type        = string
+  description = "The name or self_link of the Google Compute Engine subnetwork in which the cluster's instances are launched."
+}
+
 variable "project_id" {
   type        = string
   description = "GCP project ID"
 }
+

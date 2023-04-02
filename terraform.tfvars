@@ -30,8 +30,7 @@ router           = "demoapp-router"
 nat              = "demoapp-nat"
 db_instance_name = "demoapp-db-instance"
 db_version       = "POSTGRES_9_6"
-db_instance_type = "db-g1-small" # "db-f1-micro"
-
+db_instance_type = "db-g1-small"
 # db_availability_type will be set to 'REGIONAL' in actual implementation to achive high availability
 db_availability_type = "ZONAL"
 db_disk_size         = 10
@@ -42,5 +41,6 @@ cluster_name = "demoapp-cluster"
 # cluster locations/node count will be regionl/multiple  in the actual implementation to achieve high availability
 cluster_master_location = "us-central1"
 node_locations          = ["us-central1"]
+cluster_instance_subnet = "private-subnet-01"
 initial_node_count      = "1"
 project_id              = "tst-project-112334"
