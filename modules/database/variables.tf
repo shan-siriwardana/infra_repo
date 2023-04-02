@@ -57,3 +57,4 @@ variable "db_password" {
 variable "app_database" {
   type        = string
   description = "The name of the application database"
+}
