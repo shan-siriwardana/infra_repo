@@ -16,4 +16,7 @@ resource "google_compute_subnetwork" "subnetwork" {
   ip_cidr_range              = each.value.subnet_ip
   region                     = each.value.subnet_region
   network     = var.network_name
+  depends_on = [
+    google_compute_network.network
+  ]
 }
