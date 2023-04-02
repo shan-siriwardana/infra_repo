@@ -45,8 +45,8 @@ resource "google_container_cluster" "primary" {
 resource "google_container_node_pool" "nodepool" {
 
   cluster        = google_container_cluster.primary.name
-  node_locations = var.node_locations
-
+  #node_locations = var.node_locations
+  location = "us-central1-a"
   initial_node_count = var.initial_node_count
 
   autoscaling {
@@ -59,6 +59,10 @@ resource "google_container_node_pool" "nodepool" {
     machine_type    = var.node_machine_type
     service_account = google_service_account.cluster_service_account.email #### fill up
   }
+
+  network_config {
+  enable_private_nodes = true
+}
 
 
 }
