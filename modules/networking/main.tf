@@ -25,7 +25,7 @@ resource "google_compute_router" "router" {
   name    = var.router
   network = var.network_name
   depends_on = [
-    google_compute_network.subnetwork
+    google_compute_subnetwork.subnetwork
   ]
 }
 
@@ -35,7 +35,6 @@ resource "google_compute_router_nat" "route_nat" {
   nat_ip_allocate_option              = "AUTO_ONLY"
   source_subnetwork_ip_ranges_to_nat  = "LIST_OF_SUBNETWORKS"
 
-
 dynamic "subnetwork" {
     # for_each = local.subnets
     for_each = { for sn in local.subnets : sn.type == "private" ? sn.subnet_name : null => sn }
@@ -44,4 +43,8 @@ dynamic "subnetwork" {
       source_ip_ranges_to_nat  = "ALL_IP_RANGES"
     }
   }
+
+depends_on = [
+    google_compute_router.router
+  ]
 }
