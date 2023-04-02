@@ -74,10 +74,6 @@ variable "cluster_master_location" {
   description = "The location in which cluster master is created"
 }
 
-variable "cluster_network" {
-  type        = string
-  description = "The name or self_link of the Google Compute Engine network to which the cluster is connected."
-}
 
 variable "node_locations" {
   type        = list
