@@ -34,7 +34,7 @@ variable "db_disk_type" {
 }
 
 variable "backups_enabled" {
-  type        = string
+  type        = bool
   description = "Enable backups"
   default = "false"
 }
@@ -57,4 +57,10 @@ variable "db_password" {
 variable "app_database" {
   type        = string
   description = "The name of the application database"
+}
+
+variable "deletion_protection_enabled" {
+    type =  bool
+    description = "database instance delete protection enabled or not"
+    default = false
 }
