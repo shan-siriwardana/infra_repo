@@ -13,9 +13,9 @@ variable "cluster_network" {
   description = "The name or self_link of the Google Compute Engine network to which the cluster is connected."
 }
 
-variable "node_locations" {
-  type        = list(any)
-  description = "The list of zones in which the node pool's nodes should be located."
+variable "node_pool_location" {
+  type        = string
+  description = "The location of the node pool"
 }
 
 variable "initial_node_count" {

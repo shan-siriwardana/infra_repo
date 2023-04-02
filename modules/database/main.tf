@@ -12,24 +12,13 @@ resource "google_sql_database_instance" "db_instance" {
     disk_type                   = var.db_disk_type # set PD_HDD in module vars
 
     backup_configuration {
-      enabled = var.backups_enabled # set to false in mod vars
+      enabled = var.backups_enabled
     }
-
-
-
     ip_configuration {
 
       ipv4_enabled                                  = false
       private_network                               = var.private_network
       enable_private_path_for_google_cloud_services = true
-      # dynamic "authorized_networks" {
-      #   for_each = lookup(ip_configuration.value, "authorized_networks", [])
-      #   content {
-      #     expiration_time = lookup(authorized_networks.value, "expiration_time", null)
-      #     name            = lookup(authorized_networks.value, "name", null)
-      #     value           = lookup(authorized_networks.value, "value", null)
-      #   }
-      # }
     }
   }
 
