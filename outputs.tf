@@ -12,3 +12,8 @@ output "gke_cluster_name" {
   value       = module.kubernetes.gke_cluster_name
   description = "The GKE cluster name"
 }
+
+output "artifactory_name" {
+  value       = module.kubernetes.artifactory_name
+  description = "The GCP artifactory repository name"
+}
