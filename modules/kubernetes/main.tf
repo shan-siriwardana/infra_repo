@@ -80,3 +80,10 @@ resource "google_project_iam_member" "cluster_service_account-artifact-registry-
   role    = "roles/artifactregistry.writer"
   member  = "serviceAccount:${google_service_account.cluster_service_account.email}"
 }
+
+resource "google_artifact_registry_repository" "demoapp_repo" {
+  location      = "us-central1"
+  repository_id = "demoapp"
+  description   = "demoapp docker repository"
+  format        = "DOCKER"
+}

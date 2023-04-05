@@ -32,6 +32,7 @@ module "kubernetes" {
   initial_node_count      = var.initial_node_count
   project_id              = var.project_id
   cluster_instance_subnet = var.cluster_instance_subnet
+  artifactory_location = var.artifactory_location
   depends_on = [
     module.networking
   ]

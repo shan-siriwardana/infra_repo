@@ -89,8 +89,15 @@ variable "cluster_instance_subnet" {
   description = "The name or self_link of the Google Compute Engine subnetwork in which the cluster's instances are launched."
 }
 
+variable "artifactory_location" {
+  type        = string
+  description = "The location of the artifactory repository"
+}
+
 variable "project_id" {
   type        = string
   description = "GCP project ID"
 }
+
+
 
