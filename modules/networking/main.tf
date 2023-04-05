@@ -59,24 +59,24 @@ resource "google_compute_router_nat" "route_nat" {
   ]
 }
 
-# # private networking with GCP service provider
-# resource "google_compute_global_address" "private_ip_alloc" {
-#   name          = "private-ip-alloc"
-#   purpose       = "VPC_PEERING"
-#   address_type  = "INTERNAL"
-#   prefix_length = 24
-#   network       = google_compute_network.network.id
-#   depends_on = [
-#     google_compute_network.network
-#   ]
-# }
+# private networking with GCP service provider
+resource "google_compute_global_address" "private_ip_alloc" {
+  name          = "private-ip-alloc"
+  purpose       = "VPC_PEERING"
+  address_type  = "INTERNAL"
+  prefix_length = 24
+  network       = google_compute_network.network.id
+  depends_on = [
+    google_compute_network.network
+  ]
+}
 
-# # Create a private connection
-# resource "google_service_networking_connection" "private_vpc_connection" {
-#   network                 = google_compute_network.network.id
-#   service                 = "servicenetworking.googleapis.com"
-#   reserved_peering_ranges = [google_compute_global_address.private_ip_alloc.name]
-#   depends_on = [
-#     google_compute_network.network, google_compute_global_address.private_ip_alloc
-#   ]
-# }
+# Create a private connection
+resource "google_service_networking_connection" "private_vpc_connection" {
+  network                 = google_compute_network.network.id
+  service                 = "servicenetworking.googleapis.com"
+  reserved_peering_ranges = [google_compute_global_address.private_ip_alloc.name]
+  depends_on = [
+    google_compute_network.network, google_compute_global_address.private_ip_alloc
+  ]
+}
