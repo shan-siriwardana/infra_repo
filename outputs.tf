@@ -9,6 +9,6 @@ output "postgresql_private_ip" {
 }
 
 output "gke_cluster_name" {
-  value       = module.networking.gke_cluster_name
+  value       = module.kubernetes.gke_cluster_name
   description = "The GKE cluster name"
 }
