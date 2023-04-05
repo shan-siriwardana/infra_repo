@@ -80,3 +80,10 @@ resource "google_service_networking_connection" "private_vpc_connection" {
     google_compute_network.network, google_compute_global_address.private_ip_alloc
   ]
 }
+
+resource "google_compute_network_peering_routes_config" "peering_routes" {
+  peering = google_service_networking_connection.private_vpc_connection.peering
+  network = google_compute_network.peering_network.name
+
+  export_custom_routes = true
+}

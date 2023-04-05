@@ -23,17 +23,17 @@ module "database" {
   ]
 }
 
-# module "kubernetes" {
-#   source                  = "./modules/kubernetes"
-#   cluster_name            = var.cluster_name
-#   cluster_master_location = var.cluster_master_location
-#   cluster_network         = module.networking.network_id
-#   node_pool_location          = var.node_pool_location
-#   initial_node_count      = var.initial_node_count
-#   project_id              = var.project_id
-#   cluster_instance_subnet = var.cluster_instance_subnet
-#   depends_on = [
-#     module.networking
-#   ]
-# }
+module "kubernetes" {
+  source                  = "./modules/kubernetes"
+  cluster_name            = var.cluster_name
+  cluster_master_location = var.cluster_master_location
+  cluster_network         = module.networking.network_id
+  node_pool_location          = var.node_pool_location
+  initial_node_count      = var.initial_node_count
+  project_id              = var.project_id
+  cluster_instance_subnet = var.cluster_instance_subnet
+  depends_on = [
+    module.networking
+  ]
+}
 
